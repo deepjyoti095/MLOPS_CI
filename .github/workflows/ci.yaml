@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - main
-  pull_requests:
+  pull_request:
     branches:
       - main
 
-job:
+jobs:
   test:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -18,14 +18,14 @@ job:
 
     - name: Set up Python
       uses: actions/setup-python@v2
-      with: 
+      with:
         python-version: '3.9'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest streamlit
-    
-    -name: Run Tests
+
+    - name: Run tests
       run: |
         pytest _test.py
